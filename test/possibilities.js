@@ -12,7 +12,7 @@ tests['l possibilities'] = function () {
 
 tests['kg possibilities'] = function () {
   var actual = convert().from('kg').possibilities()
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 't' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -30,7 +30,7 @@ tests['each possibilities'] = function () {
 
 tests['mass possibilities'] = function () {
   var actual = convert().possibilities('mass')
-    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb' ];
+    , expected = [ 'mcg', 'mg', 'g', 'kg', 'oz', 'lb', 't' ];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -78,7 +78,7 @@ tests['partsPer possibilities'] = function() {
 
 tests['pressure possibilities'] = function() {
   var actual = convert().possibilities('pressure')
-    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi'];
+    , expected = [ 'Pa', 'kPa', 'MPa', 'hPa', 'bar', 'torr', 'psi', 'ksi', 'atm'];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -120,7 +120,7 @@ tests['apparent power possibilities'] = function() {
 
 tests['energy possibilities'] = function() {
   var actual = convert().possibilities('energy')
-    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ'];
+    , expected = [ 'Wh', 'mWh', 'kWh', 'MWh', 'GWh', 'J', 'kJ', 'Btu', 'kBtu', 'MBtu', 'cal', 'kcal'];
   assert.deepEqual(actual.sort(), expected.sort())
 };
 
@@ -133,171 +133,182 @@ tests['reactive energy possibilities'] = function() {
 tests['all possibilities'] = function () {
   var actual = convert().possibilities()
     // Please keep these sorted for maintainability
-    , expected = [
-        'A'
-      , 'B'
-      , 'C'
-      , 'F'
-      , 'R'
-      , 'GB'
-      , 'Gb'
-      , 'K'
-      , 'KB'
-      , 'Kb'
-      , 'MB'
-      , 'MPa'
-      , 'Mb'
-      , 'Pa'
-      , 'TB'
-      , 'Tb'
-      , 'ac'
-      , 'b'
-      , 'bar'
-      , 'cl'
-      , 'cl/s'
-      , 'cm'
-      , 'cm2'
-      , 'cm3'
-      , 'cm3/s'
-      , 'cup'
-      , 'cup/s'
-      , 'd'
-      , 'dl'
-      , 'dl/s'
-      , 'ea'
-      , 'dz'
-      , 'fl-oz'
-      , 'fl-oz/h'
-      , 'fl-oz/min'
-      , 'fl-oz/s'
-      , 'ft-us'
-      , 'ft'
-      , 'ft/s'
-      , 'ft2'
-      , 'ft3'
-      , 'ft3/h'
-      , 'ft3/min'
-      , 'ft3/s'
-      , 'g'
-      , 'gal'
-      , 'gal/h'
-      , 'gal/min'
-      , 'gal/s'
-      , 'glas'
-      , 'GVA'
-      , 'GVAR'
-      , 'GVARh'
-      , 'GW'
-      , 'GWh'
-      , 'h'
-      , 'hPa'
-      , 'ha'
-      , 'in'
-      , 'in2'
-      , 'in3'
-      , 'in3/h'
-      , 'in3/min'
-      , 'in3/s'
-      , 'J'
-      , 'kA'
-      , 'kPa'
-      , 'kanna'
-      , 'kg'
-      , 'kkp'
-      , 'kJ'
-      , 'kl'
-      , 'kl/h'
-      , 'kl/min'
-      , 'kl/s'
-      , 'km'
-      , 'km/h'
-      , 'km2'
-      , 'km3'
-      , 'km3/s'
-      , 'knot'
-      , 'krm'
-      , 'ksi'
-      , 'kV'
-      , 'kVA'
-      , 'kVAR'
-      , 'kVARh'
-      , 'kW'
-      , 'kWh'
-      , 'l'
-      , 'l/h'
-      , 'l/min'
-      , 'l/s'
-      , 'lb'
-      , 'm'
-      , 'm/h'
-      , 'm/s'
-      , 'm2'
-      , 'm3'
-      , 'm3/h'
-      , 'm3/min'
-      , 'm3/s'
-      , 'mA'
-      , 'mcg'
-      , 'mg'
-      , 'mi'
-      , 'mi2'
-      , 'min'
-      , 'ml'
-      , 'ml/s'
-      , 'mm'
-      , 'mm2'
-      , 'mm3'
-      , 'mm3/s'
-      , 'month'
-      , 'ms'
-      , 'msk'
-      , 'mu'
-      , 'mV'
-      , 'mVA'
-      , 'MVA'
-      , 'mVAR'
-      , 'MVAR'
-      , 'mVARh'
-      , 'MVARh'
-      , 'mW'
-      , 'MW'
-      , 'mWh'
-      , 'MWh'
-      , 'ns'
-      , 'oz'
-      , 'pnt'
-      , 'pnt/h'
-      , 'pnt/min'
-      , 'pnt/s'
-      , 'ppb'
-      , 'ppm'
-      , 'ppq'
-      , 'ppt'
-      , 'psi'
-      , 'qt'
-      , 'qt/s'
-      , 's'
-      , 'Tbs'
-      , 'Tbs/s'
-      , 'torr'
-      , 'tsk'
-      , 'tsp'
-      , 'tsp/s'
-      , 'V'
-      , 'VA'
-      , 'VAR'
-      , 'VARh'
-      , 'W'
-      , 'week'
-      , 'Wh'
-      , 'yd'
-      , 'yd2'
-      , 'yd3'
-      , 'yd3/h'
-      , 'yd3/min'
-      , 'yd3/s'
-      , 'year'
-  ];
+    , expected =  [
+      "A",
+      "B",
+      "Btu",
+      "C",
+      "F",
+      "GB",
+      "GHz",
+      "GVA",
+      "GVAR",
+      "GVARh",
+      "GW",
+      "GWh",
+      "Gb",
+      "Hz",
+      "J",
+      "K",
+      "KB",
+      "Kb",
+      "MB",
+      "MBtu",
+      "MHz",
+      "MPa",
+      "MVA",
+      "MVAR",
+      "MVARh",
+      "MW",
+      "MWh",
+      "Mb",
+      "Pa",
+      "R",
+      "TB",
+      "Tb",
+      "Tbs",
+      "Tbs/s",
+      "V",
+      "VA",
+      "VAR",
+      "VARh",
+      "W",
+      "Wh",
+      "ac",
+      "atm",
+      "b",
+      "bar",
+      "cal",
+      "cl",
+      "cl/s",
+      "cm",
+      "cm2",
+      "cm3",
+      "cm3/s",
+      "cup",
+      "cup/s",
+      "d",
+      "dl",
+      "dl/s",
+      "dz",
+      "ea",
+      "fl-oz",
+      "fl-oz/h",
+      "fl-oz/min",
+      "fl-oz/s",
+      "ft",
+      "ft-us",
+      "ft/s",
+      "ft2",
+      "ft3",
+      "ft3/h",
+      "ft3/min",
+      "ft3/s",
+      "g",
+      "gal",
+      "gal/h",
+      "gal/min",
+      "gal/s",
+      "glas",
+      "h",
+      "hPa",
+      "ha",
+      "in",
+      "in2",
+      "in3",
+      "in3/h",
+      "in3/min",
+      "in3/s",
+      "kA",
+      "kBtu",
+      "kHz",
+      "kJ",
+      "kPa",
+      "kV",
+      "kVA",
+      "kVAR",
+      "kVARh",
+      "kW",
+      "kWh",
+      "kanna",
+      "kcal",
+      "kg",
+      "kkp",
+      "kl",
+      "kl/h",
+      "kl/min",
+      "kl/s",
+      "km",
+      "km/h",
+      "km2",
+      "km3",
+      "km3/s",
+      "knot",
+      "krm",
+      "ksi",
+      "l",
+      "l/h",
+      "l/min",
+      "l/s",
+      "lb",
+      "m",
+      "m/h",
+      "m/s",
+      "m2",
+      "m3",
+      "m3/h",
+      "m3/min",
+      "m3/s",
+      "mA",
+      "mV",
+      "mVA",
+      "mVAR",
+      "mVARh",
+      "mW",
+      "mWh",
+      "mcg",
+      "mg",
+      "mi",
+      "mi2",
+      "min",
+      "ml",
+      "ml/s",
+      "mm",
+      "mm2",
+      "mm3",
+      "mm3/s",
+      "month",
+      "ms",
+      "msk",
+      "mu",
+      "ns",
+      "oz",
+      "pnt",
+      "pnt/h",
+      "pnt/min",
+      "pnt/s",
+      "ppb",
+      "ppm",
+      "ppq",
+      "ppt",
+      "psi",
+      "qt",
+      "qt/s",
+      "s",
+      "t",
+      "torr",
+      "tsk",
+      "tsp",
+      "tsp/s",
+      "week",
+      "yd",
+      "yd2",
+      "yd3",
+      "yd3/h",
+      "yd3/min",
+      "yd3/s",
+      "year"
+    ];
   try {
     assert.deepEqual(actual.sort(), expected.sort())
   }
